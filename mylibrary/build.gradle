@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group='com.github.yxj1213'
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+ext {
+    androidutilsVersion = '1.0.6'
+    appcompatVersion = '27.1.0'
+    retrofitVersion = '2.3.0'
+    logginginterceptor = '3.9.1'
+    rxjavaVersion = '2.1.11'
+    rxandroidVersion = "2.0.2"
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.wuxiaolong.androidutils:androidutils:$androidutilsVersion"
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    implementation "com.squareup.okhttp3:logging-interceptor:$logginginterceptor"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+    //butterknife 插件使用
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //沉浸式
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
+    //版本更新
+    compile 'com.qianwen:update-app:3.5.2'
+    //强大的adapter：集成了动画等效果---https://github.com/CymChad/BaseRecyclerViewAdapterHelper/wiki/首页
+    //使用文档 https://www.jianshu.com/p/b343fcff51b0
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
+}

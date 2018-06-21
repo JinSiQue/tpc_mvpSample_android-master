@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+/*apply plugin: 'com.android.library'*/
+
+android {
+    compileSdkVersion 27
+
+    defaultConfig {
+        applicationId "com.wuxiaolong.androidmvpsample"
+        minSdkVersion 17
+        targetSdkVersion 27
+        versionCode 1
+    }
+}
+
+
+task makeJar(type: Copy) {
+    delete 'build/libs/mylibrary.jar' //删除已经存在的jar包
+    from('build/intermediates/bundles/release/')//从该目录下加载要打包的文件
+    into('build/libs/')//jar包的保存目录
+    include('classes.jar')//设置过滤，只打包classes文件
+    rename('classes.jar', 'mylibrary.jar')//重命名，mylibrary.jar 根据自己的需求设置
+}
+makeJar.dependsOn(build)
+ext {
+    androidutilsVersion = '1.0.6'
+    appcompatVersion = '27.1.0'
+    retrofitVersion = '2.3.0'
+    logginginterceptor = '3.9.1'
+    rxjavaVersion = '2.1.11'
+    rxandroidVersion = "2.0.2"
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation project(':mylibrary')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+}
