@@ -38,7 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private List<Call> calls;
     private ToolBarUtil mToolBarHelper;
     public Toolbar toolbar;
-    public static String url="http://www.weather.com.cn/";
+    public static String url="http://www.weather.com.cn/123/";
+
+
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
